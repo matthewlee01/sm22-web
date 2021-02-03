@@ -3,21 +3,19 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
-      let el;
-
-      socket.on('time', (timeString) => {
-        el = document.getElementById('server-time');
-        el.innerHTML = 'Server time: ' + timeString;
-      });
-      
       
       socket.on('update-data', (speed, temp, rpm) => {
-        console.log(speed);
+        document.getElementById('speed').innerHTML = `speed: ${speed}`;
+        document.getElementById('temp').innerHTML = `temp: ${temp}`;
+        document.getElementById('rpm').innerHTML = `rpm: ${rpm}`;
       });
 
     </script>
   </head>
   <body>
-    <p id="server-time"></p>
+    <p id="bike-status"></p>
+    <p id="speed"></p>
+    <p id="temp"></p>
+    <p id="rpm"></p>
   </body>
 </html>
