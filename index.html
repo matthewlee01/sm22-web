@@ -18,6 +18,7 @@
 
       
       socket.on('update-data', (speed, temp, rpm) => {
+        document.getElementById('bike-status').innerHTML = 'bike status: connected';
         document.getElementById('speed').innerHTML = `speed: ${speed}`;
         document.getElementById('temp').innerHTML = `temp: ${temp}`;
         document.getElementById('rpm').innerHTML = `rpm: ${rpm}`;
