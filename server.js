@@ -17,6 +17,7 @@ io.on('connection', (socket) => {
     console.log(`client connected: ${socket.id}`);
     socket.on('update-data', (speed, temp, rpm) => {
       io.emit('update-data', speed, temp, rpm);
+    });
     socket.on('disconnect', () => console.log('client disconnected'));
 });
 
