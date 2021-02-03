@@ -9,6 +9,12 @@
         el = document.getElementById('server-time');
         el.innerHTML = 'Server time: ' + timeString;
       });
+      
+      
+      socket.on('update-data', (speed, temp, rpm) => {
+        console.log(speed);
+      });
+
     </script>
   </head>
   <body>

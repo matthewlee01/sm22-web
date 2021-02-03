@@ -14,8 +14,7 @@ const server = express()
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-    console.log('client connected');
-    console.log(socket.id);
+    console.log(`client connected: ${socket.id}`);
     socket.on('disconnect', () => console.log('client disconnected'));
 });
 
