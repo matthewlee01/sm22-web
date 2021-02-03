@@ -14,13 +14,19 @@ const server = express()
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-    console.log(`client connected: ${socket.id}`);
-    socket.on('update-data', (speed, temp, rpm) => {
-      io.emit('update-data', speed, temp, rpm);
-    });
-    socket.on('disconnect', () => console.log('client disconnected'));
+  console.log(`client connected: ${socket.id}`);
+    
+  socket.on('bike-connect', () => {
+    io.emit('bike-connect');
+  });
+  socket.on('bike-disconnect', () => {
+    io.emit('bike-disconnect');
+  });
+  socket.on('update-data', (speed, temp, rpm) => {
+    io.emit('update-data', speed, temp, rpm);
+  });
+  socket.on('disconnect', () => console.log('client disconnected'));
 });
 
-setInterval(() => io.emit("time", new Date().toTimeString()), 1000);
 
 

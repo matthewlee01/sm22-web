@@ -3,6 +3,18 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
+
+      socket.on('bike-connect', () => {
+        document.getElementById('bike-status').innerHTML = 'bike status: connected';
+      });
+
+      socket.on('bike-disconnect', () => {
+        document.getElementById('bike-status').innerHTML = 'bike status: disconnected';
+        document.getElementById('speed').innerHTML = '';
+        document.getElementById('temp').innerHTML = '';
+        document.getElementById('rpm').innerHTML = '';
+
+
       
       socket.on('update-data', (speed, temp, rpm) => {
         document.getElementById('speed').innerHTML = `speed: ${speed}`;
@@ -13,7 +25,7 @@
     </script>
   </head>
   <body>
-    <p id="bike-status"></p>
+    <p id="bike-status">bike status: disconnected</p>
     <p id="speed"></p>
     <p id="temp"></p>
     <p id="rpm"></p>
