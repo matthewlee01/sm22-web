@@ -22,8 +22,8 @@ io.on('connection', (socket) => {
     BIKE_CLIENT_ID = socket.id;
   });
 
-  socket.on('update-data', (speed, temp, rpm) => {
-    io.emit('update-data', speed, temp, rpm);
+  socket.on('update-data', (values) => {
+    io.emit('update-data', values);
   });
   socket.on('disconnect', () => {
     if (socket.id = BIKE_CLIENT_ID) {
