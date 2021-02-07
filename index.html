@@ -7,9 +7,32 @@
       socket.on('bike-connect', () => {
         document.getElementById('bike-status').innerHTML = 'bike status: connected';
       });
-      
+
+            
       socket.on('update-data', (vals) => {
-        document.getElementById('values').innerHTML = vals;
+        let valueTable = document.getElementById('value-table');
+        console.log(valueTable);
+
+        for (var i = 0; i < vals.length-1; i++) {
+          let reversedIndex = vals.length-i-1;
+          let newRow = document.createElement('tr');
+
+          let dateCell = document.createElement('td');
+          dateCell.innerHTML = vals[reversedIndex][0];
+          newRow.appendChild(dateCell);
+
+          let tempCell = document.createElement('td');
+          tempCell.innerHTML = vals[reversedIndex][1];
+          newRow.appendChild(tempCell);
+
+          let humidCell = document.createElement('td');
+          humidCell.innerHTML = vals[reversedIndex][2];
+          newRow.appendChild(humidCell);
+
+          valueTable.appendChild(newRow);
+        }
+
+
       });
 
 
@@ -18,6 +41,13 @@
   </head>
   <body>
     <p id="bike-status">bike status: disconnected</p>
-    <p id="values"></p>
+    <table id="value-table">
+      <tr>
+        <th>date</th>
+        <th>temperature</th>
+        <th>humidity (RH)%</th>
+      </tr>
+    </table>
   </body>
+
 </html>
