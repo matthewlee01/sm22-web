@@ -5,11 +5,12 @@
       let socket = io();
 
       socket.on('bike-connect', () => {
-        document.getElementById('bike-status').innerHTML = 'bike status: connected';
+        document.getElementById('sensor-status').innerHTML = 'sensor status: connected';
       });
 
             
       socket.on('update-data', (vals) => {
+        document.getElementById('sensor-status').innerHTML = 'sensor status: connected';
         let valueTable = document.getElementById('value-table');
         valueTable.innerHTML = '';
 
@@ -40,7 +41,7 @@
     </script>
   </head>
   <body>
-    <p id="bike-status">bike status: disconnected</p>
+    <p id="status">sensor status: disconnected</p>
     <table id="value-table">
       
     </table>
