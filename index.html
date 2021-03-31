@@ -2,6 +2,9 @@
   <head>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+
+      // inline javascript to render socket data on webpage
+      // TODO: refactor this code to its own referenced js file
       let socket = io();
 
       socket.on('bike-connect', () => {
